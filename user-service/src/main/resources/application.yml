@@ -1,0 +1,44 @@
+server:
+  port: 8201
+spring:
+  datasource:
+    name: druidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://47.100.166.125:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: 111!aaaA
+      #初始化链接数
+      initialSize: 5
+      #最小的空闲连接数
+      minIdle: 5
+      #最大活动连接数
+      maxActive: 20
+      #从池中取连接的最大等待时间，单位ms
+      maxWait: 60000
+      #每XXms运行一次空闲连接回收器
+      timeBetweenEvictionRunsMillis: 60000
+      #池中的连接空闲XX毫秒后被回收
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT1FROMDUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      filters: stat,wall
+      filter:
+        stat:
+          log-slow-sql: true
+  security:
+    user:
+      name: user-service
+mybatis:
+  mapper-locations:
+    - classpath:mapper/*.xml
+    - classpath*:com/**/mapper/*.xml
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka
