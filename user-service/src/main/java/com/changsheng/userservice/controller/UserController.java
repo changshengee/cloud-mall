@@ -1,5 +1,6 @@
 package com.changsheng.userservice.controller;
 
+import com.changsheng.common.common.CommonResult;
 import com.changsheng.userservice.entity.User;
 import com.changsheng.userservice.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,8 +30,8 @@ public class UserController {
      * @return 用户
      */
     @GetMapping("user/{id}")
-    public User selectOne(@PathVariable String id) {
-        return this.userService.queryById(id);
+    public CommonResult<User> selectOne(@PathVariable String id) {
+        return CommonResult.success(this.userService.queryById(id));
     }
 
 }

@@ -3,3 +3,5 @@ Accept: application/json
 
 ###
 
+GET http://localhost:8301/user/0
+Accept: application/json
